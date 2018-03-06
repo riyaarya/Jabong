@@ -1,0 +1,88 @@
+package ConfigurationDEmo;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import utility.ConfigReader;
+
+
+
+
+public class Naukri_Signup {
+	@Test(dataProvider = "Naukri_Signup")
+	
+	public void Signgup_to_naukri(String name, String email, String password,String number) 
+	{
+	
+	ConfigReader cr = new ConfigReader();
+
+		
+		System.setProperty("webdriver.gecko.driver", cr.getgeckopath());
+		WebDriver driver = new FirefoxDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.get(cr.geturl());
+		driver.findElement(By.xpath("//*[@id=\"content\"]/div[2]/div[1]/div[2]/div/button/div/b")).click();
+		driver.findElement(By.xpath("/html/body/div/form/div[1]/div/button")).click();
+		driver.findElement(By.xpath("//*[@id=\"fname\"]")).sendKeys(name);
+		driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys(email);
+		driver.findElement(By.xpath("/html/body/main/div/div/form/div[3]/div[1]/div/input")).sendKeys(password);
+		driver.findElement(By.xpath("//*[@id=\"basicDetailForm\"]/div[4]/div[1]/div/input[2]")).sendKeys(number);
+		
+		
+	}
+	
+	@DataProvider(name = "Naukri_Signup")
+	
+	public Object[][] passData() {
+		int i;
+		Object [][] arr=new Object[1][4];
+		try
+		{
+		ConfigReader cr = new ConfigReader();
+		String epath=cr.getsheet_credentials();
+		
+		//Object[][] arr = new Object[][];
+		// no think ye loop kaha tak chalega 
+		//row s less ha ti but ye row kya hau kaha se ayega excel se right
+		//yes to we have ti use excel class now which will give row count 
+		//okso before loop creare object  of excel class and pass the path of excel
+		//ye object wli line hta du fr nahi ye kyaye  h f are this object array wull use it laterto isse phle define krnge na object 
+		// ye object wali line abhi bhool jao just think row ki value kaha se ayega ok 
+		// dekho is excel wali class dekho now
+		
+		
+		Naukri_excel ne = new Naukri_excel(epath);
+		int row = ne.getrowCount(0);
+	    arr = new Object[row][4];
+		
+		for(i=0; i<row;i++) {
+			arr[i][0] = ne.getData(0,i,0);
+			arr[i][1] = ne.getData(0,i,1);
+			arr[i][2] = ne.getData(0,i,2);
+			arr[i][3] = ne.getData(0, i, 3);
+			
+		}
+		return arr;
+		
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+		
+		//return 
+		return arr;
+		
+	}
+}
+	
+//  this is noce 
+// i like it
+
+//erro sahi karo

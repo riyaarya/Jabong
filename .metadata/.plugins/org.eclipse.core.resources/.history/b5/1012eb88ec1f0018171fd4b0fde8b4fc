@@ -1,0 +1,34 @@
+package Amazon;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.Test;
+
+public class Amazon_signup {
+	
+	@Test
+	
+	public void Signup_Amazon(String name, String number, String email, String password) {
+		
+		Config_Reader cr = new Config_Reader();
+	
+		System.setProperty("webdriver.gecko.driver", cr.getgeckopath());
+		WebDriver driver = new FirefoxDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.get(cr.geturl());
+		driver.findElement(By.xpath("//*[@id=\"nav-link-yourAccount\"]/span[2]")).click();
+		driver.findElement(By.xpath("//*[@id=\"createAccountSubmit\"]")).click();
+		driver.findElement(By.id("ap_customer_name")).sendKeys();
+		driver.findElement(By.id("ap_customer_name")).sendKeys();
+		driver.findElement(By.id("ap_email")).sendKeys();
+		driver.findElement(By.id("ap_password")).sendKeys();
+		driver.findElement(By.xpath("//*[@id=\"continue\"]")).click();
+		
+		
+	}
+
+}

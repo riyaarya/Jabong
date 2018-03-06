@@ -1,0 +1,17 @@
+package Testing_Sites;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Test_site1 {
+	
+	public void test_site() {
+		
+		System.setProperty("webdriver.gecko.driver", "/home/riya/geckodriver");
+		
+		WebDriver driver = new FirefoxDriver();
+		driver.get("google.com");
+		
+		
+	}
+}

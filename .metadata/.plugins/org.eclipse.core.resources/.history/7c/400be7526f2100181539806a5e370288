@@ -1,0 +1,3 @@
+geckpath = /home/riya/geckodriver/
+url = https://www.jabong.com/
+epath = /home/riya/eclipse-workspace/SeleniumCourse/TestData/Jabong_credentials.xlsx

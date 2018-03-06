@@ -1,0 +1,4 @@
+dpath = /home/riya/geckodriver
+url = https://www.wishandgive.ca/
+epath = /home/riya/eclipse-workspace/SeleniumCourse/TestData/Wish&Give_Credentials.xlsx
+

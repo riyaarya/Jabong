@@ -1,0 +1,24 @@
+package utility;
+
+import java.util.Properties;
+
+public class Config_Reader {
+	Properties pro;
+	
+	public String getgeckopath() {
+		
+		String path = pro.getProperty("dpath");
+		System.out.println("path");
+		return path;
+		
+		
+	}
+	
+	public String geturl() {
+		
+		String url = pro.getProperty("url");
+		return url;
+		
+	}
+
+}

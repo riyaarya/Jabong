@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="34704" started-at="2018-03-04T19:29:11Z" finished-at="2018-03-04T19:29:45Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="34704" started-at="2018-03-04T19:29:11Z" finished-at="2018-03-04T19:29:45Z">
+      <class name="Testing_Sites.Test_site1">
+        <test-method status="PASS" signature="test_site(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:Testing_Sites.Test_site1@5b275dab]" name="test_site" duration-ms="33432" started-at="2018-03-04T19:29:12Z" finished-at="2018-03-04T19:29:45Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Mat]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Artthur]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[matarthurst@gmail.com]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[mat12345678]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[mat12345678]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test_site -->
+      </class> <!-- Testing_Sites.Test_site1 -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

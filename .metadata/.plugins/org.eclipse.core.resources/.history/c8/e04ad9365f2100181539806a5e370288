@@ -1,0 +1,12 @@
+package Table_project;
+
+import java.io.File;
+
+public class Config_Reader {
+	
+	public Config_Reader() {
+		
+		File src = new File("./Configuration/Config.property");
+	}
+
+}

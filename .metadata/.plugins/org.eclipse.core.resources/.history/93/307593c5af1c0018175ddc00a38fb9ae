@@ -1,0 +1,37 @@
+package ConfigurationDEmo;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.Test;
+
+import utility.ConfigReader;
+
+
+@Test
+
+public class Naukri_Signup {
+	
+	public void Signgup_to_naukri() 
+	{
+	
+	ConfigReader cr = new ConfigReader();
+
+		
+		System.setProperty("webdriver.gecko.driver", cr.getgeckopath());
+		WebDriver driver = new FirefoxDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.get(cr.geturl());
+		driver.findElement(By.xpath("//*[@id=\"content\"]/div[2]/div[1]/div[2]/div/button/div/b")).click();
+		driver.findElement(By.xpath("/html/body/div/form/div[1]/div/button")).click();
+		driver.get(cr.getsheet_credentials());
+		
+		
+	}
+}
+	
+
+//

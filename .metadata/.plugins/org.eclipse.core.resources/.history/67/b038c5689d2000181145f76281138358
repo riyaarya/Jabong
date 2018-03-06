@@ -1,0 +1,31 @@
+package Amazon;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.Test;
+
+
+public class Amazon_Login {
+	
+	@Test
+	
+	public void login_amazon() {
+		
+		System.setProperty("webdriver.gecko.driver","");
+		WebDriver driver = new FirefoxDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.get("");
+		driver.findElement(By.id("ap_email")).sendKeys("");
+		driver.findElement(By.linkText("Continue")).click();
+		driver.findElement(By.id("ap_password")).sendKeys();
+		driver.findElement(By.linkText("Login")).click();
+
+		
+		
+	}
+
+}

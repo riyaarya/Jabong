@@ -1,0 +1,69 @@
+package Testing_Sites;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import utility.Config_Reader;
+
+@Test(dataProvider = "Wish_Give_Signup")
+
+public class Test_site1 {
+	
+	public void test_site(String fname, String lname, String email, String password, String cpassword) {
+		
+		Config_Reader cr = new Config_Reader();
+		
+		
+		
+		System.setProperty("webdriver.gecko.driver", cr.getgeckopath());
+		
+		WebDriver driver = new FirefoxDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.get(cr.geturl());
+		driver.findElement(By.xpath("//*[@id=\"homepageBanner\"]/div[1]/div/div[4]/div/div/div/a")).click();
+		driver.findElement(By.id("first_name")).sendKeys(fname);
+		driver.findElement(By.id("last_name")).sendKeys(lname);
+		driver.findElement(By.id("email")).sendKeys(email);
+		driver.findElement(By.id("password")).sendKeys(password);
+		driver.findElement(By.id("confirm_password")).sendKeys(cpassword);
+		driver.findElement(By.xpath("//*[@id=\"frm_signup\"]/div[6]/label/div")).click();
+		driver.findElement(By.id("btn_submit")).click();
+		driver.close();
+	}
+	
+	
+	@DataProvider(name = "Wish_Give_Signup")
+	//write again ok
+	
+	public Object[][] passData(){
+		Config_Reader cr = new Config_Reader();
+		Wish_Give_Excel wge = new Wish_Give_Excel(cr.getepath());
+		
+		int row = wge.getrowCount();
+		
+		Object[][] arr = new Object[row][5];
+		for(int i= 0; i<row; i++) {
+			
+			arr[i][0] = wge.passData(0, i, 0);
+			arr[i][1] = wge.passData(0, i, 1);
+
+			arr[i][2] = wge.passData(0, i, 2);
+
+			arr[i][3] = wge.passData(0, i, 3);
+
+			arr[i][4] = wge.passData(0, i, 4);
+
+}
+		return arr;
+	}
+}
+//good abhi likha na hud se //are ye chala gay tha connection
+// now ok?
+//???ha sahi se aaya ha ok now run this

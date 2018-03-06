@@ -1,0 +1,89 @@
+package Testing_Sites;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import utility.Config_Reader;
+
+@Test(dataProvider = "Wish_Give_Signup")
+
+public class Test_site1 {
+	
+	public void test_site(String fname, String lname, String email, String password, String cpassword) {
+		
+		Config_Reader cr = new Config_Reader();
+		
+		
+		
+		System.setProperty("webdriver.gecko.driver", cr.getgeckopath());
+		
+		WebDriver driver = new FirefoxDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.get(cr.geturl());
+		driver.findElement(By.xpath("//*[@id=\"homepageBanner\"]/div[1]/div/div[4]/div/div/div/a")).click();
+		driver.findElement(By.id("first_name")).sendKeys(fname);
+		driver.findElement(By.id("last_name")).sendKeys(lname);
+		driver.findElement(By.id("email")).sendKeys(email);
+		driver.findElement(By.id("password")).sendKeys(password);
+		driver.findElement(By.id("confirm_password")).sendKeys(cpassword);
+		driver.findElement(By.xpath("//*[@id=\"frm_signup\"]/div[6]/label/div")).click();
+		driver.findElement(By.id("btn_submit")).click();
+		driver.close();
+	}
+	
+	
+	@DataProvider(name = "Wish_Give_Signup")// see here we will call this method na of excel yes ok so here we will make object of array na then
+	//we will proceed yes abi t suno ye ek dunction hai method kyu delete kar diya 2 min ruko dont get panic
+	// have a look at the function  once and then do by yourself okay ek dekh lo method its not a problem we do see that
+	
+	
+	public Object[][] passonData() {
+		// we raeecreating this function to get data from sheet ok
+		// we need path so config reader ka object banake usse path lenege 
+		// now we have path we need daat so ye kam kaun karega excel jo abhi banaya hum logo na 
+		// we  will create object ob excel so jab dekhogi excel constructor ko to usme path chahite
+		// to ye sheet ka pth jo config readere se mila hai udhar passkarenge
+		// now we have object of excel class now  we define anarray of object which will have row and col length 
+		//meaning object[row][number of element in sheet] so row kaha se aayega 
+		// we will call method on object of excel which will give rowcount
+		// now we will create look and will take value using method 
+		// then return the object we just defined imean object array
+		// abhi clear to ab hmne ye object bnaya h isme hm eapth pass krnge ya alg s object arr bn k krnge
+		
+		//see hmne ye array object bnaya ok yes now we wil make object nahi usse pehe we haveto rtake excel sheet 
+
+		//path ok
+		
+		Config_Reader cr = new Config_Reader();//object of config reader create hue ok
+		// now create the object of excel and pass cr.geckopath aise 
+		
+		Wish_Give_Excel wge = new Wish_Give_Excel(cr.getepath());//ye object bna to h here will pass na yes ho gya ok good now createarray og object
+		int row=wge.getrowCount();
+		Object[][] arr = new Object[row][5];// sahi kar rahi this size always right hand side me //now get the row from wge ??? will get row from excel yes
+		//ok
+		//ruko kya kar rahi ho yaar row mujhe karne do ek bar
+		for(int i=0;i<row;i++)
+		{
+			arr[i][0]=wge.passData(0, i, 0);
+			arr[i][1]=wge.passData(0, i, 1);
+			arr[i][2]=wge.passData(0, i, 2);
+			arr[i][3]=wge.passData(0, i, 3);
+			arr[i][4]=wge.passData(0, i, 4);
+			
+		}
+		return arr;
+		
+		
+		
+		
+		
+
+	}
+}
